@@ -47,3 +47,8 @@ main {
 .review button {
   margin-top: 10px;
 }
+
+table td,
+table th {
+  text-align: center;
+}
