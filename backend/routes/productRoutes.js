@@ -3,6 +3,7 @@ import checkObjectId from "../middleware/checkObjectId.js";
 import {
   createProduct,
   createProductReview,
+  deleteProduct,
   getProductById,
   getProducts,
   getTopProducts,
@@ -19,6 +20,7 @@ router.route("/:id/reviews").post(protect, checkObjectId, createProductReview);
 router
   .route("/:id")
   .get(checkObjectId, getProductById)
-  .put(protect, admin, checkObjectId, updateProduct);
+  .put(protect, admin, checkObjectId, updateProduct)
+  .delete(protect, admin, checkObjectId, deleteProduct);
 
 export default router;
