@@ -64,7 +64,7 @@ const createProduct = asyncHandler(async (req, res) => {
     description: "Sample description",
   });
 
-  const createdProduct = await Product.save();
+  const createdProduct = await product.save();
   res.status(201).json(createdProduct);
 });
 
@@ -97,14 +97,13 @@ const updateProduct = asyncHandler(async (req, res) => {
 // @desc    Delete a product
 // @route   DELETE /api/products/:id
 // @access  Private/Admin
-const deleteProduct = asyncHandler(async(req,res)=>{
+const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
-  if(product){
-    await product.deleteOne({_id: product._id});
-    res.json({message: 'Product removed'});
-  }
-  else{
+  if (product) {
+    await product.deleteOne({ _id: product._id });
+    res.json({ message: "Product removed" });
+  } else {
     res.status(404);
     throw new Error("Product not found");
   }
